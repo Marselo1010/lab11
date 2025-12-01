@@ -7,12 +7,12 @@ import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.awt.Toolkit;
 import java.io.Serial;
-import java.lang.reflect.Array;
-import java.util.Comparator;
+//import java.lang.reflect.Array;
+//import java.util.Comparator;
 import java.util.Objects;
 import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.LongStream;
+//import java.util.stream.Collectors;
+//import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 import javax.swing.BorderFactory;
@@ -48,12 +48,15 @@ public final class LambdaFilter extends JFrame {
          */
         IDENTITY("No modifications", Function.identity()),
         LOWER_CASE("String to lower case", String::toLowerCase),
-        COUNT_CHARS("count the number of chars", s -> {return  String.valueOf(s.length());}),
-        COUNT_LINES("count the number of lines", s -> {return String.valueOf(s.lines().count());}),
-        ALPHABETICAL_LIST("alphabetical order",s -> {return String.valueOf(Stream.of(s.split("\s")).sorted().toList());}),
+        COUNT_CHARS("count the number of chars", s -> {
+            return String.valueOf(s.length()); }),
+        COUNT_LINES("count the number of lines", s -> {
+            return String.valueOf(s.lines().count()); }),
+        ALPHABETICAL_LIST("alphabetical order", s -> {
+            return String.valueOf(Stream.of(s.split("\s"))
+                .sorted()
+                .toList()); });
         //COUNT_WORDS("count words", s -> { return String.valueOf(Stream.of(s.split("\s")).collect(Collectors.groupingBy(,3)));})
-        ;
-
         private final String commandName;
         private final Function<String, String> fun;
 
